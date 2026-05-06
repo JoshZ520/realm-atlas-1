@@ -19,14 +19,14 @@
 
 **Purpose**: Initialize the Next.js project, install all dependencies, configure tooling.
 
-- [ ] T001 Initialize Next.js 15 App Router project with TypeScript, Tailwind CSS, ESLint, and `src/` directory structure per `specs/quickstart.md`
-- [ ] T002 Install all production dependencies: `prisma @prisma/client next-auth@beta bcryptjs react-hook-form @hookform/resolvers zod class-variance-authority clsx tailwind-merge`
-- [ ] T003 [P] Install dev dependencies: `@types/bcryptjs jest @testing-library/react @testing-library/jest-dom @playwright/test`
-- [ ] T004 [P] Configure ESLint with TypeScript strict mode and zero-warnings policy in `eslint.config.mjs`
-- [ ] T005 [P] Initialize shadcn/ui and add base components: `button input label card dialog badge skeleton` per `specs/quickstart.md`
-- [ ] T006 [P] Configure Jest with `jest.config.ts` and `jest.setup.ts` (`@testing-library/jest-dom` setup); add `npm test` script
-- [ ] T007 [P] Configure Playwright with `playwright.config.ts`; add `npm run test:e2e` script
-- [ ] T008 Create `.env.local` template (`.env.local.example`) with `DATABASE_URL`, `NEXTAUTH_URL`, `NEXTAUTH_SECRET` placeholders
+- [x] T001 Initialize Next.js 15 App Router project with TypeScript, Tailwind CSS, ESLint, and `src/` directory structure per `specs/quickstart.md`
+- [x] T002 Install all production dependencies: `prisma @prisma/client next-auth@beta bcryptjs react-hook-form @hookform/resolvers zod class-variance-authority clsx tailwind-merge`
+- [x] T003 [P] Install dev dependencies: `@types/bcryptjs jest @testing-library/react @testing-library/jest-dom @playwright/test`
+- [x] T004 [P] Configure ESLint with TypeScript strict mode and zero-warnings policy in `eslint.config.mjs`
+- [x] T005 [P] Initialize shadcn/ui and add base components: `button input label card dialog badge skeleton` per `specs/quickstart.md`
+- [x] T006 [P] Configure Jest with `jest.config.ts` and `jest.setup.ts` (`@testing-library/jest-dom` setup); add `npm test` script
+- [x] T007 [P] Configure Playwright with `playwright.config.ts`; add `npm run test:e2e` script
+- [x] T008 Create `.env.local` template (`.env.local.example`) with `DATABASE_URL`, `NEXTAUTH_URL`, `NEXTAUTH_SECRET` placeholders
 
 **Checkpoint**: Project boots (`npm run dev`) with zero lint warnings, test runner executes, Playwright config valid.
 
@@ -38,15 +38,15 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T009 Copy Prisma schema from `specs/data-model.md` into `prisma/schema.prisma` (User, World, Region, Event/EventStatus, Outcome models with all indexes and cascade relations)
-- [ ] T010 Run `npx prisma migrate dev --name init` to create initial migration and run `npx prisma generate` to generate the client
-- [ ] T011 Create Prisma client singleton in `src/lib/prisma.ts` (global instance pattern for dev hot-reload safety)
-- [ ] T012 [P] Create zod validation schemas in `src/lib/validations/auth.ts` (register: username 3–50 chars alphanumeric+underscore, password ≥8 chars with ≥1 letter and ≥1 number)
-- [ ] T013 [P] Create zod validation schemas in `src/lib/validations/world.ts`, `src/lib/validations/region.ts`, `src/lib/validations/event.ts`, `src/lib/validations/outcome.ts` (all field constraints from data-model.md)
-- [ ] T014 Create utility helpers in `src/lib/utils.ts` (`cn()` for Tailwind class merging, `formatDate()`)
-- [ ] T015 [P] Create shared TypeScript types in `src/types/index.ts` (WorldWithCounts, RegionWithCount, EventWithOutcomes, etc.)
-- [ ] T016 Create root layout in `src/app/layout.tsx` (fonts, SessionProvider wrapper, Tailwind base styles)
-- [ ] T017 Create shared UI components: `src/components/shared/ErrorMessage.tsx`, `src/components/shared/LoadingSkeleton.tsx`, `src/components/shared/DeleteConfirmDialog.tsx`
+- [x] T009 Copy Prisma schema from `specs/data-model.md` into `prisma/schema.prisma` (User, World, Region, Event/EventStatus, Outcome models with all indexes and cascade relations)
+- [ ] T010 Run `npx prisma migrate dev --name init` ← requires running PostgreSQL to create initial migration and run `npx prisma generate` to generate the client
+- [x] T011 Create Prisma client singleton in `src/lib/prisma.ts` (global instance pattern for dev hot-reload safety)
+- [x] T012 [P] Create zod validation schemas in `src/lib/validations/auth.ts` (register: username 3–50 chars alphanumeric+underscore, password ≥8 chars with ≥1 letter and ≥1 number)
+- [x] T013 [P] Create zod validation schemas in `src/lib/validations/world.ts`, `src/lib/validations/region.ts`, `src/lib/validations/event.ts`, `src/lib/validations/outcome.ts` (all field constraints from data-model.md)
+- [x] T014 Create utility helpers in `src/lib/utils.ts` (`cn()` for Tailwind class merging, `formatDate()`)
+- [x] T015 [P] Create shared TypeScript types in `src/types/index.ts` (WorldWithCounts, RegionWithCount, EventWithOutcomes, etc.)
+- [x] T016 Create root layout in `src/app/layout.tsx` (fonts, SessionProvider wrapper, Tailwind base styles)
+- [x] T017 Create shared UI components: `src/components/shared/ErrorMessage.tsx`, `src/components/shared/LoadingSkeleton.tsx`, `src/components/shared/DeleteConfirmDialog.tsx`
 
 **Checkpoint**: Database migrated and Prisma client works; all zod schemas importable; shared components render without errors.
 

@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  username  String   @unique @db.VarChar(50)
+  password  String
+  createdAt DateTime @default(now())
+
+  worlds World[]
+
+  @@index([username])
+}
+
+model World {
+  id          String   @id @default(cuid())
+  name        String   @db.VarChar(100)
+  description String?  @db.VarChar(2000)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  userId  String
+  user    User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  regions Region[]
+
+  @@index([userId])
+}
+
+model Region {
+  id          String   @id @default(cuid())
+  name        String   @db.VarChar(100)
+  description String?  @db.VarChar(2000)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  worldId String
+  world   World   @relation(fields: [worldId], references: [id], onDelete: Cascade)
+  events  Event[]
+
+  @@index([worldId])
+}
+
+enum EventStatus {
+  active
+  resolved
+  ignored
+}
+
+model Event {
+  id              String      @id @default(cuid())
+  title           String      @db.VarChar(100)
+  description     String      @db.VarChar(2000)
+  status          EventStatus @default(active)
+  createdAt       DateTime    @default(now())
+  statusUpdatedAt DateTime    @default(now())
+
+  regionId String
+  region   Region    @relation(fields: [regionId], references: [id], onDelete: Cascade)
+  outcomes Outcome[]
+
+  @@index([regionId])
+  @@index([regionId, status])
+}
+
+model Outcome {
+  id          String   @id @default(cuid())
+  description String   @db.VarChar(2000)
+  occurred    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  eventId String
+  event   Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@index([eventId])
+}
