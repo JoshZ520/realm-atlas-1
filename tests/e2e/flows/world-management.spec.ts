@@ -75,3 +75,77 @@ test.describe("World Management", () => {
     await expect(page.getByText("World To Delete")).not.toBeVisible();
   });
 });
+
+// T048 — Region management e2e tests
+test.describe("Region Management", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto("/login");
+    await page.getByLabel("Username").fill("test_dm");
+    await page.getByLabel("Password").fill("TestPass1");
+    await page.getByRole("button", { name: "Sign In" }).click();
+    await page.waitForURL("/dashboard");
+
+    // Create a world to work in
+    await page.getByRole("button", { name: "Create World" }).click();
+    const dialog = page.getByRole("dialog");
+    await dialog.getByLabel("Name").fill("Region Test World");
+    await dialog.getByRole("button", { name: "Create" }).click();
+    await page.getByText("Region Test World").click();
+  });
+
+  test("given_world_detail_page_when_creates_region_then_region_appears_with_zero_events", async ({
+    page,
+  }) => {
+    await page.getByRole("button", { name: "Add Region" }).click();
+    const dialog = page.getByRole("dialog");
+    await dialog.getByLabel("Name").fill("Northern Reaches");
+    await dialog.getByRole("button", { name: "Create" }).click();
+
+    await expect(page.getByText("Northern Reaches")).toBeVisible();
+    await expect(page.getByText("0 events")).toBeVisible();
+  });
+
+  test("given_existing_region_when_edits_name_then_updated_name_shown", async ({
+    page,
+  }) => {
+    await page.getByRole("button", { name: "Add Region" }).click();
+    let dialog = page.getByRole("dialog");
+    await dialog.getByLabel("Name").fill("Old Region Name");
+    await dialog.getByRole("button", { name: "Create" }).click();
+    await expect(page.getByText("Old Region Name")).toBeVisible();
+
+    await page
+      .getByText("Old Region Name")
+      .locator("..")
+      .getByRole("button", { name: "Edit" })
+      .click();
+    dialog = page.getByRole("dialog");
+    await dialog.getByLabel("Name").fill("New Region Name");
+    await dialog.getByRole("button", { name: "Save" }).click();
+
+    await expect(page.getByText("New Region Name")).toBeVisible();
+    await expect(page.getByText("Old Region Name")).not.toBeVisible();
+  });
+
+  test("given_existing_region_when_deletes_with_confirmation_then_region_gone", async ({
+    page,
+  }) => {
+    await page.getByRole("button", { name: "Add Region" }).click();
+    const dialog = page.getByRole("dialog");
+    await dialog.getByLabel("Name").fill("Region To Delete");
+    await dialog.getByRole("button", { name: "Create" }).click();
+    await expect(page.getByText("Region To Delete")).toBeVisible();
+
+    await page
+      .getByText("Region To Delete")
+      .locator("..")
+      .getByRole("button", { name: "Delete" })
+      .click();
+    await page
+      .getByRole("dialog")
+      .getByRole("button", { name: "Delete" })
+      .click();
+
+    await expect(page.getByText("Region To Delete")).not.toBeVisible();
+  });
+});
