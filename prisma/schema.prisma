@@ -4,6 +4,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
+  // Supabase fallback: provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 

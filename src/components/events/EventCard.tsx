@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -49,12 +48,7 @@ export function EventCard({ event, worldId, regionId }: EventCardProps) {
         <CardHeader className="flex-row items-start justify-between gap-2 pb-2">
           <div className="space-y-1 min-w-0">
             <CardTitle className="text-base leading-tight">
-              <Link
-                href={`/worlds/${worldId}/regions/${regionId}/events/${event.id}`}
-                className="hover:underline focus-visible:underline"
-              >
-                {event.title}
-              </Link>
+              {event.title}
             </CardTitle>
             <EventStatusBadge status={event.status} />
           </div>

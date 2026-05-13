@@ -28,14 +28,6 @@ export interface EventBase {
   regionId: string;
 }
 
-export interface OutcomeBase {
-  id: string;
-  description: string;
-  occurred: boolean;
-  createdAt: Date;
-  eventId: string;
-}
-
 export type WorldWithCounts = WorldBase & {
   totalEventCount: number;
   activeEventCount: number;
@@ -45,8 +37,7 @@ export type RegionWithCount = RegionBase & {
   eventCount: number;
 };
 
-export type EventWithOutcomes = EventBase & {
-  outcomes: OutcomeBase[];
+export type EventWithRegion = EventBase & {
   region?: { id: string; name: string };
 };
 

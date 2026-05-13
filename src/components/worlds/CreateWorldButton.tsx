@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { WorldForm } from "@/components/worlds/WorldForm";
+import { CreateWorldWizard } from "@/components/worlds/CreateWorldWizard";
 
 export function CreateWorldButton() {
   const [open, setOpen] = useState(false);
@@ -13,15 +12,7 @@ export function CreateWorldButton() {
       <Button onClick={() => setOpen(true)} className="min-h-[44px]">
         Create World
       </Button>
-
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle>Create World</DialogTitle>
-          </DialogHeader>
-          <WorldForm onSuccess={() => setOpen(false)} />
-        </DialogContent>
-      </Dialog>
+      <CreateWorldWizard open={open} onOpenChange={setOpen} onSuccess={() => setOpen(false)} />
     </>
   );
 }

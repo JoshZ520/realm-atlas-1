@@ -56,7 +56,6 @@ export async function getEventById(
 
   return prisma.event.findFirst({
     where: { id: eventId, regionId },
-    include: { outcomes: { orderBy: { createdAt: "asc" } } },
   });
 }
 
