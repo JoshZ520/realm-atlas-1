@@ -21,13 +21,15 @@ export default async function RegionDetailPage({ params, searchParams }: Props) 
   const session = await auth();
   const userId = session!.user!.id as string;
 
-  const region = await getRegionById(regionId, worldId, userId);
-  if (!region) notFound();
-
   const statusParsed = rawStatus ? eventStatusSchema.safeParse(rawStatus) : null;
   const statusFilter = statusParsed?.success ? statusParsed.data : undefined;
 
-  const events = await getEventsByRegion(regionId, worldId, userId, statusFilter);
+  const [region, events] = await Promise.all([
+    getRegionById(regionId, worldId, userId),
+    getEventsByRegion(regionId, worldId, userId, statusFilter),
+  ]);
+
+  if (!region) notFound();
 
   return (
     <div className="space-y-6">

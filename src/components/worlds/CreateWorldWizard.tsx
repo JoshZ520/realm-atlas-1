@@ -125,9 +125,9 @@ export function CreateWorldWizard({ open, onOpenChange, onSuccess }: {
       setLoading(false);
       onOpenChange(false);
       onSuccess?.();
-    } catch (e: any) {
+    } catch (e: unknown) {
       setLoading(false);
-      setError(e.message || "Something went wrong");
+      setError(e instanceof Error ? e.message : "Something went wrong");
     }
   }
 

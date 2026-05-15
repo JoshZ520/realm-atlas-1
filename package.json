@@ -7,6 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --max-warnings=0",
+    "prisma:generate": "prisma generate",
+    "prisma:push": "prisma db push",
+    "prisma:migrate": "prisma migrate dev",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:e2e": "playwright test"
