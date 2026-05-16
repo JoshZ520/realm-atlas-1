@@ -1,0 +1,13 @@
+<svg width="640" height="420" viewBox="0 0 640 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="420" rx="28" fill="#1b1b20"/>
+  <circle cx="320" cy="210" r="150" fill="#2a2b33"/>
+  <circle cx="320" cy="210" r="138" stroke="#d8a04f" stroke-opacity="0.7" stroke-width="4"/>
+  <path d="M235 272C235 272 216 218 252 188C284 162 315 184 315 184C315 184 302 149 342 140C382 131 410 162 410 162C410 162 395 167 386 185C379 199 379 216 379 216C379 216 412 215 423 243C434 271 411 296 411 296C411 296 410 268 385 257C355 244 327 257 327 257C327 257 300 301 250 289C235 286 235 272 235 272Z" fill="#d8a04f"/>
+  <path d="M296 235C296 235 315 220 340 223" stroke="#1b1b20" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="358" cy="193" r="7" fill="#1b1b20"/>
+  <path d="M211 130L276 153" stroke="#d8a04f" stroke-width="8" stroke-linecap="round"/>
+  <path d="M429 120L381 158" stroke="#d8a04f" stroke-width="8" stroke-linecap="round"/>
+  <path d="M186 298L250 269" stroke="#d8a04f" stroke-width="8" stroke-linecap="round"/>
+  <path d="M449 291L389 263" stroke="#d8a04f" stroke-width="8" stroke-linecap="round"/>
+  <text x="320" y="360" text-anchor="middle" fill="#d8a04f" font-family="Georgia, serif" font-size="28" letter-spacing="4">REALM ATLAS</text>
+</svg>

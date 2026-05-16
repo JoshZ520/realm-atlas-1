@@ -126,3 +126,41 @@
     @apply font-sans;
   }
 }
+
+@keyframes landingFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes landingFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.landing-grid-bg {
+  background-image:
+    linear-gradient(to right, rgb(255 223 164 / 10%) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 223 164 / 10%) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(circle at 50% 30%, black 40%, transparent 90%);
+}
+
+.landing-fade-up {
+  opacity: 0;
+  animation: landingFadeUp 620ms ease forwards;
+}
+
+.landing-float {
+  animation: landingFadeUp 620ms ease forwards, landingFloat 5s ease-in-out 1s infinite;
+}
